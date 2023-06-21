@@ -43,9 +43,9 @@ python manage.py migrate
 python manage.py createsuperuser
 # В директории infra_sprint1/backend/kittygram_backend/ создать файл .env
 cp env_default backend/kittygram_backend/.env
-file0=backend/kittygram_backend/.env
-sed -i -e s/ВашIP/$ip/g ${file0}
-sed -i -e s/ВашДОМЕН/$domain/g ${file0}
+file=backend/kittygram_backend/.env
+sed -i -e s/ВашIP/$ip/g ${file}
+sed -i -e s/ВашДОМЕН/$domain/g ${file}
 # Создать папку media и назначить текущего польвателя владельцем
 sudo mkdir -p /var/www/infra_sprint1/media
 sudo chown -R ВАШ ЛОГИН /var/www/infra_sprint1/media/
@@ -54,8 +54,8 @@ cd frontend/
 npm i
 # Создать юнит для gunicorn
 sudo cp gunicorn_kittygram /etc/systemd/system/gunicorn_kittygram.service
-file1=/etc/systemd/system/gunicorn_kittygram.service
-sed -i -e s/ВашЛОГИН/$login/g ${file1}
+file=/etc/systemd/system/gunicorn_kittygram.service
+sed -i -e s/ВашЛОГИН/$login/g ${file}
 # Запуск процеса gunicorn и добавление его в автозапуск, командами start,
 # stop, restart можно управлять процессом
 sudo systemctl start gunicorn_kittygram
@@ -68,9 +68,9 @@ npm run build
 sudo cp -r /home/yc-user/taski/frontend/build/. /var/www/infra_sprint1/
 # Создать файл конфигурацуии Nginx
 sudo cp nginx_default /etc/nginx/sites-enabled/default
-file2=/etc/nginx/sites-enabled/default
-sed -i -e s/ВашIP/$ip/g ${file2}
-sed -i -e s/ВашДОМЕН/$domain/g ${file2}
+file=/etc/nginx/sites-enabled/default
+sed -i -e s/ВашIP/$ip/g ${file}
+sed -i -e s/ВашДОМЕН/$domain/g ${file}
 # Проверка файла конфигурации Nginx
 # sudo nginx -t
 # Перезапуск конфигурации Nginx
