@@ -8,12 +8,13 @@
 - доменное имя(при наличии)
 
 ### Перед запуском скрипта убедится что папка находится в корневой директории.
-### Выполнить команду в терминале.
+
+Выполнить команду в терминале.
 ```sh
 chmod 700 /deployment_script/installation_script.sh
 ./installation_script.sh
 ```
-### Скрипт `save.sh` пушит проект на github
+Скрипт `save.sh` пушит проект на github
 ```sh
 chmod 700 /deployment_script/save.sh
 ./save.sh
