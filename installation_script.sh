@@ -43,6 +43,9 @@ python manage.py migrate
 python manage.py createsuperuser
 # В директории `infra_sprint1/backend/kittygram_backend/` создать файл `.env`
 cp env_default backend/kittygram_backend/.env
+file0=backend/kittygram_backend/.env
+sed -i -e s/ВашIP/$ip/g ${file0}
+sed -i -e s/ВашДОМЕН/$domain/g ${file0}
 # Создать папку `media` и назначить текущего польвателя владельцем
 sudo mkdir -p /var/www/infra_sprint1/media
 sudo chown -R ВАШ ЛОГИН /var/www/infra_sprint1/media/
