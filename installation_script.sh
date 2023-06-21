@@ -67,6 +67,7 @@ npm run build
 # Копировать собранную статику в системную библиотеку
 sudo cp -r /home/yc-user/taski/frontend/build/. /var/www/infra_sprint1/
 # Создать файл конфигурацуии Nginx
+rm -r /etc/nginx/sites-enabled/default
 sudo cp nginx_default /etc/nginx/sites-enabled/default
 file=/etc/nginx/sites-enabled/default
 sed -i -e s/ВашIP/$ip/g ${file}
