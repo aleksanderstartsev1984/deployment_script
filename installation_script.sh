@@ -58,8 +58,8 @@ file=/etc/systemd/system/gunicorn_kittygram.service
 sed -i -e s/ВашЛОГИН/$login/g ${file}
 # Запуск процеса gunicorn и добавление его в автозапуск, командами start,
 # stop, restart можно управлять процессом
-sudo systemctl start gunicorn_kittygram
-sudo systemctl enable gunicorn_kittygram
+sudo systemctl start gunicorn_kittygram.service
+sudo systemctl enable gunicorn_kittygram.service
 # Проверить работоспособность запущенного демона
 sudo systemctl status gunicorn_kittygram
 # Собрать статику фронтенда находясь в директории /infra_sprint1/frontend/
