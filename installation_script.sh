@@ -11,10 +11,10 @@ read -p 'введите domain:    ' domain
 ###############################################################################
 # Обновить список доступных пакетов
 sudo apt update
-# Установить `Node.js`
+# Установить Node.js
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
 sudo apt-get install -y nodejs
-# Установить и запустить `Nginx`
+# Установить и запустить Nginx
 sudo apt install nginx -y
 sudo systemctl start nginx
 # Установить пакетный менеджер и утилиту для создания виртуального окружения
@@ -41,12 +41,12 @@ pip install -r requirements.txt
 python manage.py migrate
 # Создать суперпользователя
 python manage.py createsuperuser
-# В директории `infra_sprint1/backend/kittygram_backend/` создать файл `.env`
+# В директории infra_sprint1/backend/kittygram_backend/ создать файл .env
 cp env_default backend/kittygram_backend/.env
 file0=backend/kittygram_backend/.env
 sed -i -e s/ВашIP/$ip/g ${file0}
 sed -i -e s/ВашДОМЕН/$domain/g ${file0}
-# Создать папку `media` и назначить текущего польвателя владельцем
+# Создать папку media и назначить текущего польвателя владельцем
 sudo mkdir -p /var/www/infra_sprint1/media
 sudo chown -R ВАШ ЛОГИН /var/www/infra_sprint1/media/
 # Установить зависимости для фронтенда
@@ -66,7 +66,7 @@ sudo systemctl status gunicorn_kittygram
 npm run build
 # Копировать собранную статику в системную библиотеку
 sudo cp -r /home/yc-user/taski/frontend/build/. /var/www/infra_sprint1/
-# Создать файл конфигурацуии `Nginx`
+# Создать файл конфигурацуии Nginx
 sudo cp nginx_default /etc/nginx/sites-enabled/default
 file2=/etc/nginx/sites-enabled/default
 sed -i -e s/ВашIP/$ip/g ${file2}
