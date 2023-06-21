@@ -28,7 +28,7 @@ sudo ufw enable
 ###############################################################################
 # Установка проекта
 ###############################################################################
-# Клонировать репозиторий
+# Клонировать репозиторий(ссылку на репу легко меняется на свою)
 git clone git@github.com:aleksanderstartsev1984/infra_sprint1.git
 # Создать виртуальное окружение, устанавить зависимости
 cd infra_sprint1/backend/
@@ -61,11 +61,12 @@ sed -i -e s/ВашЛОГИН/$login/g ${file}
 sudo systemctl start gunicorn_kittygram.service
 sudo systemctl enable gunicorn_kittygram.service
 # Проверить работоспособность запущенного демона
-sudo systemctl status gunicorn_kittygram
+# sudo systemctl status gunicorn_kittygram
 # Собрать статику фронтенда находясь в директории /infra_sprint1/frontend/
 npm run build
 # Копировать собранную статику в системную библиотеку
-sudo cp -r /home/yc-user/taski/frontend/build/. /var/www/infra_sprint1/
+sudo cp -r /home/yc-user/infra_sprint1/frontend/build/. /var/www/infra_sprint1/
+# rm -r /home/yc-user/infra_sprint1/frontend/build/node_modules
 # Создать файл конфигурацуии Nginx
 rm -r /etc/nginx/sites-enabled/default
 sudo cp nginx_default /etc/nginx/sites-enabled/default
@@ -81,5 +82,6 @@ cd ..
 cd backend/
 python manage.py collectstatic
 sudo cp -r static_backend/ /var/www/infra_sprint1/
+rm -r static_backend/
 # Перезапустить сервер
 sudo reboot
