@@ -81,7 +81,7 @@ sudo systemctl enable gunicorn_kittygram.service
 npm run build
 # Копировать собранную статику в системную библиотеку
 sudo cp -r /home/$login/infra_sprint1/frontend/build/. /var/www/infra_sprint1/
-sudo rm -r /home/yc-user/infra_sprint1/frontend/node_modules
+sudo rm -r /home/$login/infra_sprint1/frontend/node_modules
 # Создать файл конфигурацуии Nginx
 sudo rm -r /etc/nginx/sites-enabled/default
 sudo cp /home/$login/deployment_script/nginx_default /etc/nginx/sites-enabled/default
