@@ -46,8 +46,8 @@ cd ..
 # В директории infra_sprint1/backend/kittygram_backend/ создать файл .env
 sudo cp /home/$login/deployment_script/env_default /home/$login/infra_sprint1/backend/kittygram_backend/.env
 file=backend/kittygram_backend/.env
-sed -i -e s/ВашIP/$ip/g ${file}
-sed -i -e s/ВашДОМЕН/$domain/g ${file}
+sudo sed -i -e s/ВашIP/$ip/g ${file}
+sudo sed -i -e s/ВашДОМЕН/$domain/g ${file}
 # Создать папку media и назначить текущего польвателя владельцем
 sudo mkdir -p /var/www/infra_sprint1/media
 sudo chown -R $login /var/www/infra_sprint1/media/
@@ -57,7 +57,7 @@ npm i
 # Создать юнит для gunicorn
 sudo cp /home/$login/deployment_script/gunicorn_kittygram /etc/systemd/system/gunicorn_kittygram.service
 file=/etc/systemd/system/gunicorn_kittygram.service
-sed -i -e s/ВашЛОГИН/$login/g ${file}
+sudo sed -i -e s/ВашЛОГИН/$login/g ${file}
 # Запуск процеса gunicorn и добавление его в автозапуск, командами start,
 # stop, restart можно управлять процессом
 sudo systemctl start gunicorn_kittygram.service
@@ -73,8 +73,8 @@ sudo cp -r /home/$login/infra_sprint1/frontend/build/. /var/www/infra_sprint1/
 sudo rm -r /etc/nginx/sites-enabled/default
 sudo cp /home/$login/deployment_script/nginx_default /etc/nginx/sites-enabled/default
 file=/etc/nginx/sites-enabled/default
-sed -i -e s/ВашIP/$ip/g ${file}
-sed -i -e s/ВашДОМЕН/$domain/g ${file}
+sudo sed -i -e s/ВашIP/$ip/g ${file}
+sudo sed -i -e s/ВашДОМЕН/$domain/g ${file}
 # Проверка файла конфигурации Nginx
 # sudo nginx -t
 # Перезапуск конфигурации Nginx
