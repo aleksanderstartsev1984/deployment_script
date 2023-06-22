@@ -29,8 +29,6 @@ https://ВашДОМЕН
 ```
 Папку `deployment_script` можно удалить.
 
-Скрипт `save.sh` пушит проект на github.
-
 ### Автор
 
 https://github.com/aleksanderstartsev1984
