@@ -13,7 +13,8 @@
 ```sh
 deployment_script/installation_script.sh
 ```
-Скрипт `save.sh` пушит проект на github
+Скрипт `save.sh` пушит проект на github. находясь в директории `deployment_script`
+выполнить команду
 ```sh
 ./save.sh
 ```
