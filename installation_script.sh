@@ -97,7 +97,7 @@ sudo systemctl reload nginx
 # Собрать статику бэкэнда и копировать в системную директорию
 cd ..
 cd backend/
-python manage.py collectstatic
+python3 manage.py collectstatic
 sudo cp -r static_backend/ /var/www/infra_sprint1/
 # sudo rm -r static_backend/
 # Перезапустить сервер
