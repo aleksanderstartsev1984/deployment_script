@@ -25,6 +25,16 @@ sudo ufw allow OpenSSH
 sudo ufw enable
 # Проверка статуса фаевола
 # sudo ufw status
+# Установка пакетного менеджера snap
+sudo apt install snapd
+# Установка и обновление зависимостей для пакетного менеджера snap.
+sudo snap install core
+sudo snap refresh core
+# Установка пакета certbot.
+sudo snap install --classic certbot
+# Создание ссылки на certbot в системной директории,
+# чтобы у пользователя с правами администратора был доступ к этому пакету.
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ###############################################################################
 # Установка проекта
 ###############################################################################
@@ -39,9 +49,9 @@ pip install --upgrade pip
 pip install -r requirements.txt
 # Применить миграции
 cd backend/
-python manage.py migrate
+python3 manage.py migrate
 # Создать суперпользователя
-python manage.py createsuperuser
+python3 manage.py createsuperuser
 cd ..
 # В директории infra_sprint1/backend/kittygram_backend/ создать файл .env
 sudo cp /home/$login/deployment_script/env_default /home/$login/infra_sprint1/backend/kittygram_backend/.env
@@ -54,6 +64,8 @@ sudo chown -R $login /var/www/infra_sprint1/media/
 # Установить зависимости для фронтенда
 cd frontend/
 npm i
+# Удалить старый юнит gunicorn(усли таковой имеется)
+sudo rm -r /etc/systemd/system/gunicorn_kittygram.service
 # Создать юнит для gunicorn
 sudo cp /home/$login/deployment_script/gunicorn_kittygram /etc/systemd/system/gunicorn_kittygram.service
 file=/etc/systemd/system/gunicorn_kittygram.service
@@ -68,7 +80,7 @@ sudo systemctl enable gunicorn_kittygram.service
 npm run build
 # Копировать собранную статику в системную библиотеку
 sudo cp -r /home/$login/infra_sprint1/frontend/build/. /var/www/infra_sprint1/
-# rm -r /home/yc-user/infra_sprint1/frontend/build/node_modules
+sudo rm -r /home/yc-user/infra_sprint1/frontend/node_modules
 # Создать файл конфигурацуии Nginx
 sudo rm -r /etc/nginx/sites-enabled/default
 sudo cp /home/$login/deployment_script/nginx_default /etc/nginx/sites-enabled/default
@@ -77,6 +89,8 @@ sudo sed -i -e s/ВашIP/$ip/g ${file}
 sudo sed -i -e s/ВашДОМЕН/$domain/g ${file}
 # Проверка файла конфигурации Nginx
 # sudo nginx -t
+# Получение SSL-сертификата
+sudo certbot --nginx
 # Перезапуск конфигурации Nginx
 sudo systemctl reload nginx
 # Собрать статику бэкэнда и копировать в системную директорию
@@ -84,6 +98,6 @@ cd ..
 cd backend/
 python manage.py collectstatic
 sudo cp -r static_backend/ /var/www/infra_sprint1/
-rm -r static_backend/
+# sudo rm -r static_backend/
 # Перезапустить сервер
 sudo reboot
