@@ -51,6 +51,7 @@ pip install -r requirements.txt
 cd backend/
 python3 manage.py migrate
 # Создать суперпользователя
+echo creating a superuser:
 python3 manage.py createsuperuser
 cd ..
 # В директории infra_sprint1/backend/kittygram_backend/ создать файл .env
