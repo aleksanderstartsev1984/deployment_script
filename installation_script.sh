@@ -44,7 +44,7 @@ python manage.py migrate
 python manage.py createsuperuser
 cd ..
 # В директории infra_sprint1/backend/kittygram_backend/ создать файл .env
-sudo cp /home/$login/deployment_script/env_default /home/$login/infra_sprint/backend/kittygram_backend/.env
+sudo cp /home/$login/deployment_script/env_default /home/$login/infra_sprint1/backend/kittygram_backend/.env
 file=backend/kittygram_backend/.env
 sed -i -e s/ВашIP/$ip/g ${file}
 sed -i -e s/ВашДОМЕН/$domain/g ${file}
