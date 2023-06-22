@@ -42,7 +42,7 @@ python manage.py migrate
 # Создать суперпользователя
 python manage.py createsuperuser
 # В директории infra_sprint1/backend/kittygram_backend/ создать файл .env
-sudo cp deployment_script/env_default infra_sprint/backend/kittygram_backend/.env
+sudo cp /home/$login/deployment_script/env_default /home/$login/infra_sprint/backend/kittygram_backend/.env
 file=backend/kittygram_backend/.env
 sed -i -e s/ВашIP/$ip/g ${file}
 sed -i -e s/ВашДОМЕН/$domain/g ${file}
@@ -53,7 +53,7 @@ sudo chown -R ВАШ ЛОГИН /var/www/infra_sprint1/media/
 cd frontend/
 npm i
 # Создать юнит для gunicorn
-sudo cp deployment_script/gunicorn_kittygram /etc/systemd/system/gunicorn_kittygram.service
+sudo cp /home/$login/deployment_script/gunicorn_kittygram /etc/systemd/system/gunicorn_kittygram.service
 file=/etc/systemd/system/gunicorn_kittygram.service
 sed -i -e s/ВашЛОГИН/$login/g ${file}
 # Запуск процеса gunicorn и добавление его в автозапуск, командами start,
@@ -65,11 +65,11 @@ sudo systemctl enable gunicorn_kittygram.service
 # Собрать статику фронтенда находясь в директории /infra_sprint1/frontend/
 npm run build
 # Копировать собранную статику в системную библиотеку
-sudo cp -r /home/yc-user/infra_sprint1/frontend/build/. /var/www/infra_sprint1/
+sudo cp -r /home/$login/infra_sprint1/frontend/build/. /var/www/infra_sprint1/
 # rm -r /home/yc-user/infra_sprint1/frontend/build/node_modules
 # Создать файл конфигурацуии Nginx
 sudo rm -r /etc/nginx/sites-enabled/default
-sudo cp deployment_script/nginx_default /etc/nginx/sites-enabled/default
+sudo cp /home/$login/deployment_script/nginx_default /etc/nginx/sites-enabled/default
 file=/etc/nginx/sites-enabled/default
 sed -i -e s/ВашIP/$ip/g ${file}
 sed -i -e s/ВашДОМЕН/$domain/g ${file}
