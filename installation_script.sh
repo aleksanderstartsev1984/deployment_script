@@ -48,7 +48,7 @@ sed -i -e s/ВашIP/$ip/g ${file}
 sed -i -e s/ВашДОМЕН/$domain/g ${file}
 # Создать папку media и назначить текущего польвателя владельцем
 sudo mkdir -p /var/www/infra_sprint1/media
-sudo chown -R ВАШ ЛОГИН /var/www/infra_sprint1/media/
+sudo chown -R $login /var/www/infra_sprint1/media/
 # Установить зависимости для фронтенда
 cd frontend/
 npm i
