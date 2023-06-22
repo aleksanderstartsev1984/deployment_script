@@ -11,11 +11,11 @@
 
 Выполнить команду в терминале.
 ```sh
-chmod 700 /deployment_script/installation_script.sh
-./installation_script.sh
+chmod 700 deployment_script/installation_script.sh
+deployment_script/installation_script.sh
 ```
 Скрипт `save.sh` пушит проект на github
 ```sh
-chmod 700 /deployment_script/save.sh
+chmod 700 deployment_script/save.sh
 ./save.sh
 ```
