@@ -26,6 +26,8 @@ deployment_script/installation_script.sh
 ```
 https://ВашДОМЕН
 ```
+Папку `deployment_script` можно удалить.
+
 Скрипт `save.sh` пушит проект на github.
 
 ### Автор
