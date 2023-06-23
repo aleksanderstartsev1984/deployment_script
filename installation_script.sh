@@ -1,7 +1,4 @@
 #!/usr/bin/bash
-###############################################################################
-# Установка проекта(на удалённом сервере)
-###############################################################################
 # Запись переменных
 read -p 'введите login:     ' login
 read -p 'введите IP:        ' ip
@@ -52,7 +49,7 @@ cd backend/
 python3 manage.py migrate
 # Создать суперпользователя
 echo
-echo CREATING A SUPERUSER:
+echo "                    CREATING A SUPERUSER:"
 echo
 python3 manage.py createsuperuser
 cd ..
