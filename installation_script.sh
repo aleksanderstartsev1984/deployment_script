@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 # Начать индикацию выполнения скрипта
 timer_funce(){
-    wile sleep 1
+    wile sleep 
     do
     echo -n "*" > &2
     done
