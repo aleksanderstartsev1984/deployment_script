@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 # Начать индикацию выполнения скрипта
 timer_funce(){
-    while sleep 1; do echo -n "*" > &2; done
+    while sleep 1; do echo -n "*"; done
 }
 timer_funce &
 timer_funce_pid=$!
