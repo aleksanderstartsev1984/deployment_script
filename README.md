@@ -17,8 +17,7 @@
 
 Выполнить команду в терминале
 ```sh
-sudo apt-get install pv
-pv deployment_script/installation_script.sh
+deployment_script/installation_script.sh
 ```
 
 Ввести логин, пароль, домен.
