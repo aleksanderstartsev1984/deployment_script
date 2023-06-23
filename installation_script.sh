@@ -1,10 +1,4 @@
 #!/usr/bin/bash
-# Начать индикацию выполнения скрипта
-timer_funce(){
-    while sleep 1; do echo -n "*"; done
-}
-timer_funce &
-timer_funce_pid=$!
 ###############################################################################
 # Установка проекта(на удалённом сервере)
 ###############################################################################
@@ -106,7 +100,5 @@ cd backend/
 python3 manage.py collectstatic
 sudo cp -r static_backend/ /var/www/infra_sprint1/
 # sudo rm -r static_backend/
-# Остановить индикацию выполнения скрипта
-kill $timer_funce_pid
 # Перезапустить сервер
 sudo reboot
