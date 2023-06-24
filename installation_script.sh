@@ -35,6 +35,8 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ###############################################################################
 # Установка проекта
 ###############################################################################
+# Удалить старую папку проекта
+sudo rm -rf infra_sprint1
 # Клонировать репозиторий(ссылку на репу легко меняется на свою)
 git clone git@github.com:aleksanderstartsev1984/infra_sprint1.git
 # Создать виртуальное окружение, устанавить зависимости
@@ -49,7 +51,7 @@ cd backend/
 python3 manage.py migrate
 # Создать суперпользователя
 echo
-echo "                    CREATING A SUPERUSER:"
+echo "CREATING A SUPERUSER:"
 echo
 python3 manage.py createsuperuser
 cd ..
