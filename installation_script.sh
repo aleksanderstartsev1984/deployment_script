@@ -38,7 +38,7 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 # Удалить старую папку проекта
 sudo rm -rf infra_sprint1
 # Клонировать репозиторий(ссылку на репу легко меняется на свою)
-# git clone git@github.com:darkus13/infra_sprint1.git
+# git clone <ваша ссылка>
 # Моя репа
 git clone git@github.com:aleksanderstartsev1984/infra_sprint1.git
 # Создать виртуальное окружение, устанавить зависимости
